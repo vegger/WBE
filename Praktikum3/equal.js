@@ -8,10 +8,10 @@ function equal(o1, o2) {
   if(o1Keys.length !== Object.keys(o2).length) return false
   
   for(let key of o1Keys) {
-      if(o1[key] !== o2[key]) return false
+      if(o1[key] !== o2[key]) return false 
   }
 
   return true
 }
-equal()
+//equal()
 module.exports = {equal}
