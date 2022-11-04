@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Event Demo</title>
+	<script>
+	
+window.onload = () => {
+
+	var bibimg = document.querySelector('img')
+  bibimg.src = "https://www.zhaw.ch/storage/_processed_/b/2/"
+           + "csm_hsb-winterthur-aussenansicht-vorne_3198f01cca.jpg"
+
+	bibimg.addEventListener('load', function() {
+		alert("Image loaded")
+	})
+
+	var timestamp = Date.now() + 3000
+	while (Date.now() < timestamp) {}
+	
+}
+	
+	</script>
+</head>
+<body>
+	<div>
+		<img src="" alt="Hochschulbibliothek in Winterthur">
+	</div>
+</body>
+</html>
