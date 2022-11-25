@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vier gewinnt</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+
+/*
+ *  This solution sould be considered as a proof of concept – the code 
+ *  definitely needs some cleanup and documentation
+ */
+ 
+let state = {
+  board: [
+    [ '', '', '', '', '', '', '' ],
+    [ '', '', '', '', '', '', '' ],
+    [ '', '', '', '', '', '', '' ],
+    [ '', '', '', '', '', '', '' ],
+    [ '', '', '', '', '', '', '' ],
+    [ '', '', '', '', '', '', '' ]
+  ],
+  next: 'b'
+}
+
+const SERVICE = "http://localhost:3000/api/data/c4state?api-key=c4game"
+
+
+//  Initialize game
+//
+function initGame () {
+  let board = showBoard()
+  attachEventHandler(board)
+}
+
+
+//  Show board
+// 
+function showBoard () {
+  let board = document.querySelector(".board")
+
+  // first remove all fields
+  while (board.firstChild) { board.removeChild(board.firstChild) }
+
+  // ...
+  // your implementation
+  // ...
+
+  return board
+}
+
+
+//  Helper function for DOM manipulation
+// 
+function elt (type, attrs, ...children) {
+  let node = document.createElement(type)
+  for (a in attrs) {
+    node.setAttribute(a, attrs[a])
+  }
+  for (let child of children) {
+    if (typeof child != "string") node.appendChild(child)
+    else node.appendChild(document.createTextNode(child))
+  }
+  return node
+}
+
+
+//  Attach event handler to board
+//
+function attachEventHandler (board) {
+  board.addEventListener("click", (e) => {
+    
+    // ...
+    // your implementation
+    // ...
+     
+    showBoard()
+  })
+}
+
+
+//  Get current state from server and re-draw board
+//
+function loadState () {
+
+  // ...
+  // your implementation
+  // ...
+
+}
+
+//  Put current state to server
+//
+function saveState () {
+
+  // ...
+  // your implementation
+  // ...
+
+}
+
+  </script>
+
+</head>
+<body>
+
+  <div class="board"></div>
+  
+  <div class="controls">
+    <button onclick="loadState()">Load</button>
+    <button onclick="saveState()">Save</button>
+  </div>
+
+  <script>
+    initGame()
+  </script>
+
+</body>
+</html>
