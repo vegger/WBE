@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script   src="https://code.jquery.com/jquery-3.5.1.slim.js"   integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM="   crossorigin="anonymous"></script> 
+  <script>
+
+
+
+function init () {
+  let app = document.querySelector(".app")
+  let data = ["Maria", "Hans", "Eva", "Peter"]
+  render(List(data), app)
+}
+
+function render (tree, elem) {
+  while (elem.firstChild) { elem.removeChild(elem.firstChild) }
+  $(elem).append(tree)
+}
+
+function List (data) {
+  return $("<ul>").append(...data.map(item => $("<li>").text(item)))
+}
+
+    
+  </script>
+
+</head>
+<body>
+
+  <div class="app"></div>
+
+  <script>
+    init()
+  </script>
+
+</body>
+</html>

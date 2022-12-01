@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>React Demo: Map Over Collection</title>
+  <!-- Script tags including React -->
+  <script src="lib/react/react.js"></script>
+  <script src="lib/react/react-dom.js"></script>
+  <script src="lib/babel/babel.min.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+ 
+
+const List = ({data}) => (
+  <ul>
+    { data.map(item => (<li key={item}>{item}</li>)) }
+  </ul>
+)
+
+
+ReactDOM.render((
+  <List data={["Maria", "Hans", "Eva", "Peter"]} />
+  ),
+  document.getElementById('app')
+)
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+
+
+
+function init () {
+  let app = document.querySelector(".app")
+  let data = ["Maria", "Hans", "Eva", "Peter"]
+  render(List(data), app)
+}
+
+function render (tree, elem) {
+  while (elem.firstChild) { elem.removeChild(elem.firstChild) }
+  elem.appendChild(tree)
+}
+
+function List (data) {
+  return elt("ul", {}, ...data.map(item => elt("li", {}, item)))
+}
+
+function elt (type, attrs, ...children) {
+  let node = document.createElement(type)
+  for (a in attrs) {
+    node.setAttribute(a, attrs[a])
+  }
+  for (let child of children) {
+    if (typeof child != "string") node.appendChild(child)
+    else node.appendChild(document.createTextNode(child))
+  }
+  return node
+}
+
+    
+  </script>
+
+</head>
+<body>
+
+  <div class="app"></div>
+
+  <script>
+    init()
+  </script>
+
+</body>
+</html>

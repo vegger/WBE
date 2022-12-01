@@ -27,6 +27,7 @@ function guidGenerator() {
 //  Statische Dateien im Verzeichnis public
 app.use(express.static('public'))
 
+
 //  API-Key überprüfen
 // 
 app.use('/api', function(req, res, next){
@@ -52,7 +53,7 @@ app.use(express.json())
 var apiKeys = ['wbeweb', 'c4game']
 
 //  unsere tolle in-memory Datenbank :)
-var data = {1234567890: {demodata: "wbe is an inspiring challenge"}}
+var data = {1234567890: {next: "r", board: Array(6).fill("").map(() => Array(7).fill(""))}}
 
 //  GET-Request bearbeiten
 //
