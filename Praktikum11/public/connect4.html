@@ -130,6 +130,15 @@ async function loadState () {
   showBoard()
 }
 
+//Your implementation
+function loadStateFromLocalStorage () {
+  tempState = JSON.parse(localStorage.getItem("state"))
+  if (tempState) {
+    state = tempState 
+    showBoard()
+  }
+}
+
 //  Put current state to server
 //
 function saveState () {
@@ -144,6 +153,10 @@ function saveState () {
   })
 }
 
+//Your implementation
+function saveStateToLocalStorage () {
+  localStorage.setItem("state", JSON.stringify(state))
+}
   </script>
 
 </head>
@@ -152,8 +165,10 @@ function saveState () {
   <div class="board"></div>
   
   <div class="controls">
-    <button onclick="loadState()">Load</button>
-    <button onclick="saveState()">Save</button>
+    <button onclick="loadStateFromLocalStorage()">Load</button>
+    <button onclick="saveStateToLocalStorage()">Save</button>
+    <button onclick="loadState()">Load From Server</button>
+    <button onclick="saveState()">Save to Server</button>
   </div>
 
   <script>
