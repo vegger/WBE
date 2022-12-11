@@ -9,3 +9,5 @@ function setInObj(object, attribute, value) {
     newObject[attribute] = value
     return newObject
 }
+
+export {setInList, setInObj}
