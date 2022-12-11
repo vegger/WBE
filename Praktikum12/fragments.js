@@ -28,8 +28,19 @@ const Board = ({board}) => {
   )
 }
 
-const Field = ({type}) => {
-  // ...
+const Field = ({fields}) => {
+  let color = ''
+    if (type === 'r') {
+        color = 'red'
+    } else if (type === 'b') {
+        color = 'blue'
+    }
+
+    return (
+        ['div', { className: 'field' }, (
+            color ? ['div', { className: 'piece ' + color }] : null
+        )]
+    )
 }
 
 
