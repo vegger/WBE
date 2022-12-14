@@ -3,6 +3,10 @@
   *  This solution sould be considered as a proof of concept – the code
   *  definitely needs some cleanup and documentation
   */
+window.onload = () => {
+  initGame()
+}
+
 let state = {
   board: [
     ["", "", "", "", "", "", ""],
