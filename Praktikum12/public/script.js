@@ -22,7 +22,7 @@ let state = {
   next: "b",
 };
 
-let stateSeq = [state] //GCY
+let stateSeq = [Object.assign({}, state)] //GCY
 
 const SERVICE = "http://localhost:3000/api/data/c4state?api-key=c4game";
 
@@ -36,7 +36,6 @@ function initGame() {
 //  Show board
 //
 function showBoard() {
-  console.log("showBoard", state.board)
   let board = document.querySelector(".board");
 
   // first remove all fields
@@ -114,8 +113,6 @@ function attachEventHandler(board) {
     const node = e.target;
     const colNr = node.dataset.col;
     const rowNr = node.dataset.row;
-    console.log("COL: ", colNr);
-    console.log("ROW: ", rowNr);
     makeMove(rowNr, colNr);
     showBoard();
   });
@@ -125,7 +122,6 @@ function attachEventHandler(board) {
 // your implementation
 // ...
 function makeMove(rowNr, colNr) {
-  console.log("makemove")
   let board = state.board
   for (let i = board.length - 1; i >= 0; i--) {
     if (i < rowNr) return; // Weiter oben als angeklickt
@@ -133,7 +129,6 @@ function makeMove(rowNr, colNr) {
     if (board[i][colNr] == "") {
       stateSeq.push(setInObj(state, "board", state.board))
       let newList = setInList(board[i], colNr, state.next)
-      console.log(newList)
       board = setInList(board, i, newList)
       state.board = board
       state.next == "b" ? (state.next = "r") : (state.next = "b");
@@ -186,6 +181,7 @@ function saveStateToLocalStorage() {
 
 // wege ohni sjdon
 window.undoState = function undoState() {
+  if(stateSeq.length == 0) return
   state = stateSeq.pop()
   showBoard()
 }
