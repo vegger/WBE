@@ -1,4 +1,7 @@
 "use strict"
+
+const { setInList } = require("./changeState");
+
 /*
   *  This solution sould be considered as a proof of concept – the code
   *  definitely needs some cleanup and documentation
@@ -18,6 +21,8 @@ let state = {
   ],
   next: "b",
 };
+
+let stateSeq = [] //GCY
 
 const SERVICE = "http://localhost:3000/api/data/c4state?api-key=c4game";
 
@@ -119,6 +124,7 @@ function attachEventHandler(board) {
 // your implementation
 // ...
 function makeMove(rowNr, colNr) {
+  stateSeq.push(setInList(state, ))
   const board = state.board;
   for (let i = board.length - 1; i >= 0; i--) {
     if (i < rowNr) return; // Weiter oben als angeklickt
@@ -169,4 +175,10 @@ function saveState() {
 //Your implementation
 function saveStateToLocalStorage() {
   localStorage.setItem("state", JSON.stringify(state));
+}
+
+//Your implementation 
+function undoState() {
+  state = stateSeq.pop()
+  showBoard()
 }

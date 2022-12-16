@@ -5,9 +5,12 @@
     <title>Vier gewinnt</title>
     <link rel="stylesheet" href="styles.css" />
     <script type="text/javascript" src="./script.js"></script>
+    <script type="text/javascript" src="./changeState.js"></script>
   </head>
   <body>
     <div class="board"></div>
+
+    <button onclick="undoState()">Undo</button>
 
     <div class="controls">
       <button onclick="loadStateFromLocalStorage()">Load</button>
