@@ -1,6 +1,6 @@
 "use strict"
 
-const { setInList } = require("./changeState");
+import { setInList, setInObj } from "./changeState.js";
 
 /*
   *  This solution sould be considered as a proof of concept – the code
@@ -22,7 +22,7 @@ let state = {
   next: "b",
 };
 
-let stateSeq = [] //GCY
+let stateSeq = [state] //GCY
 
 const SERVICE = "http://localhost:3000/api/data/c4state?api-key=c4game";
 
@@ -36,6 +36,7 @@ function initGame() {
 //  Show board
 //
 function showBoard() {
+  console.log("showBoard", state.board)
   let board = document.querySelector(".board");
 
   // first remove all fields
@@ -124,13 +125,17 @@ function attachEventHandler(board) {
 // your implementation
 // ...
 function makeMove(rowNr, colNr) {
-  stateSeq.push(setInList(state, ))
-  const board = state.board;
+  console.log("makemove")
+  let board = state.board
   for (let i = board.length - 1; i >= 0; i--) {
     if (i < rowNr) return; // Weiter oben als angeklickt
 
     if (board[i][colNr] == "") {
-      board[i][colNr] = state.next;
+      stateSeq.push(setInObj(state, "board", state.board))
+      let newList = setInList(board[i], colNr, state.next)
+      console.log(newList)
+      board = setInList(board, i, newList)
+      state.board = board
       state.next == "b" ? (state.next = "r") : (state.next = "b");
       break;
     }
@@ -178,7 +183,9 @@ function saveStateToLocalStorage() {
 }
 
 //Your implementation 
-function undoState() {
+
+// wege ohni sjdon
+window.undoState = function undoState() {
   state = stateSeq.pop()
   showBoard()
 }

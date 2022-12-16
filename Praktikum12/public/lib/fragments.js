@@ -1,5 +1,5 @@
 
-import { render } from "./lib/suiweb.js"
+import { render } from "./suiweb.js"
 
 let state = {
   board: [

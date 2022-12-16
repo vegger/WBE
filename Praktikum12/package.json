@@ -2,6 +2,7 @@
   "name": "expresso",
   "version": "1.0.0",
   "description": "Express Demo Project",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
