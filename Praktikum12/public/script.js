@@ -1,42 +1,43 @@
 "use strict"
 
 import { setInList, setInObj } from "./changeState.js";
+import { App } from './components/App.js'
+import { render } from "./lib/suiweb.js";
 
 /*
   *  This solution sould be considered as a proof of concept – the code
   *  definitely needs some cleanup and documentation
   */
 window.onload = () => {
-  initGame()
+  showBoard()
 }
 
-let state = {
-  board: [
-    ["", "", "", "", "", "", ""],
-    ["", "", "", "", "", "", ""],
-    ["", "", "", "", "", "", ""],
-    ["", "", "", "", "", "", ""],
-    ["", "", "", "", "", "", ""],
-    ["", "", "", "", "", "", ""],
-  ],
-  next: "b",
-};
+function showBoard () {
+  const app = document.querySelector(".app")
+  render([App], app)
+  return app
+}
 
-let stateSeq = [Object.assign({}, state)] //GCY
+
+
+let stateSeq = [Object.assign({}, App)] //GCY
 
 const SERVICE = "http://localhost:3000/api/data/c4state?api-key=c4game";
 
 //  Initialize game
 //
 function initGame() {
+
   let board = showBoard();
   attachEventHandler(board);
 }
 
 //  Show board
 //
-function showBoard() {
+/*
+function showBsdafasdfoard() {
   let board = document.querySelector(".board");
+
 
   // first remove all fields
   while (board.firstChild) {
@@ -87,7 +88,7 @@ function showBoard() {
 
   document.getElementsByClassName("board")[0].append(...nodes);
   return document.getElementsByClassName("board")[0];
-}
+}*/
 
 //  Helper function for DOM manipulation
 //
@@ -121,21 +122,7 @@ function attachEventHandler(board) {
 // ...
 // your implementation
 // ...
-function makeMove(rowNr, colNr) {
-  let board = state.board
-  for (let i = board.length - 1; i >= 0; i--) {
-    if (i < rowNr) return; // Weiter oben als angeklickt
 
-    if (board[i][colNr] == "") {
-      stateSeq.push(setInObj(state, "board", state.board))
-      let newList = setInList(board[i], colNr, state.next)
-      board = setInList(board, i, newList)
-      state.board = board
-      state.next == "b" ? (state.next = "r") : (state.next = "b");
-      break;
-    }
-  }
-}
 
 //  Get current state from server and re-draw board
 //
