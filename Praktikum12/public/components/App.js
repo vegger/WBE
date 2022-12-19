@@ -30,10 +30,9 @@ export const App = () => {
     }
   }
 
-  const handler = (e) => {
-    console.log(e)
+  const handler = (rowNr, colNr) => {
+    console.log("row", rowNr, "col ", colNr)
   }
 
-  //return [Board, {board: state.board, onclick: handler}]
   return [Board, {board:state.board, clickhandler: handler}]
 }
