@@ -9,7 +9,7 @@ export const App = () => {
     board: [
       [ '', '', '', '', '', '', '' ],
       [ '', '', '', '', '', '', '' ],
-      [ '', '', '', 'b', '', '', '' ],
+      [ '', '', '', '', '', '', '' ],
       [ '', '', '', '', '', '', '' ],
       [ '', '', '', '', '', '', '' ],
       [ '', '', '', '', '', '', '' ]
@@ -38,10 +38,13 @@ export const App = () => {
     setState(state)
   }
 
-  const handler = (rowNr, colNr) => {
-    console.log("row", rowNr, "col ", colNr)
-    makeMove(rowNr, colNr)
-  }
-
-  return [Board, {board:state.board, clickhandler: handler}]
+  return ["section", 
+          [Board, {board:state.board, clickhandler: makeMove}],
+          ["button", {onclick: () => console.log("hallo")}, "load"],
+          ["button", "", "safe"],
+          ["button", "", "safe from server"],
+          ["button", "", "safe to server"],
+          ["button", "", "undo"]
+        ]
+          
 }
