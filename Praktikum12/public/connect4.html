@@ -4,21 +4,9 @@
     <meta charset="UTF-8" />
     <title>Vier gewinnt</title>
     <link rel="stylesheet" href="styles.css" />
-    <script type="text/javascript" src="./script.js"></script>
+    <script type="module" src="./script.js"></script>
   </head>
   <body>
-    <div class="board"></div>
-
-    <div class="controls">
-      <button onclick="loadStateFromLocalStorage()">Load</button>
-      <button onclick="saveStateToLocalStorage()">Save</button>
-      <button onclick="loadState()">Load From Server</button>
-      <button onclick="saveState()">Save to Server</button>
-    </div>
-
-    <button onclick="initSJDON()">SJDON</button>
-
-    <div class="sjdon"></div>
-    <script src="render-sjdon.js"></script>
+    <div class="app"></div>
   </body>
 </html>

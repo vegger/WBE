@@ -3,7 +3,7 @@
  *  WBE-Praktikum
  */
 
-var express = require('express')
+import express, { json } from 'express'
 var app = express()
 
 //  Fehlerobjekt anlegen
@@ -47,7 +47,7 @@ app.use('/api', function(req, res, next){
 })
 
 //  JSON-Daten akzeptieren
-app.use(express.json())
+app.use(json())
 
 //  gültige API-Keys
 var apiKeys = ['wbeweb', 'c4game']
