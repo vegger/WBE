@@ -1,6 +1,6 @@
 'use strict'
 
-function connect4Winner(color, board) {
+export function connect4Winner(color, board) {
   //check rows
   for(let rowNr = 0; rowNr < board.length; rowNr++) {
     let count = 0
@@ -68,16 +68,5 @@ function connect4Winner(color, board) {
     }
   }
 
-
   return false
 }
-
-console.log(connect4Winner('r', [
-[ '_', '_', '_', '_', '_', '_', '_' ],
-[ '_', '_', '_', '_', 'r', '_', '_' ],
-[ '_', '_', 'r', 'b', 'b', '_', '_' ],
-[ '_', '_', 'r', 'b', 'r', 'b', 'b' ],
-[ '_', 'r', 'r', 'b', 'r', '_', 'b' ],
-[ 'b', 'b', 'b', 'r', 'r', 'r', 'b' ]]))
-
-module.exports = { connect4Winner }
