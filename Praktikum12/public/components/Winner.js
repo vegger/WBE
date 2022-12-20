@@ -1,6 +1,6 @@
 export const Winner = ({winner}) => {
 
   return (
-      ['div', `${winner ? 'The winner is ' + winner : ""}`]
+      ['h1', `${winner ? 'The winner is ' + winner : ''}`]
   )
 }

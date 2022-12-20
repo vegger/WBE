@@ -61,6 +61,7 @@ export const App = () => {
 
   return ["section", 
           [Winner, {winner}],
+          ["h2", `${!winner ? 'The next play is ' + state.next : ''}`],
           [Board, {board:state.board, clickhandler: makeMove}],
           ["button", {onclick: loadFromLocalStorage}, "load"],
           ["button", {onclick: () => saveStateToLocalStorage(state)}, "save"],
