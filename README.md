@@ -2,6 +2,8 @@
 
 Team: Valentin Egger (eggerval), Laura Bärmel (baermlau), Cyril Gabriele (gabricyr)
 
+Spielinformationen: https://de.wikipedia.org/wiki/Vier_gewinnt
+
 Funktionsübersicht:
 - Undo-Funktion: Macht den letzten Schritt rückgängig. 
 - Reset-Funktion: Setzt das Spiel auf den Anfang zurück (alle Steine werden entfernt).
