@@ -73,12 +73,12 @@ export const App = () => {
           [Winner, {winner}],
           ["h2", `${!winner ? 'The next play is ' + playerType[state.next] : ''}`],
           [Board, {board:state.board, clickhandler: makeMove}],
-          ["button", {onclick: loadFromLocalStorage}, "load"],
+          ["div", {className: "buttons"}, ["button", {onclick: loadFromLocalStorage}, "load"],
           ["button", {onclick: () => saveStateToLocalStorage(state)}, "save"],
           ["button", {onclick: loadFromServer}, "load from server"],
           ["button", {onclick: () => saveState(state)}, "save to server"],
           ["button", {onclick: undoState}, "undo"],
-          ["button", {onclick: resetGame}, "reset game"]
+          ["button", {onclick: resetGame}, "reset game"]]
         ]
           
 }
