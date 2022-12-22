@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 div {
-   box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .board {
@@ -10,10 +10,6 @@ div {
   outline: 1px solid black;
   display: flex;
   flex-wrap: wrap;
-}
-
-.inactive {
-  background-color: #eee;
 }
 
 .board .field {
@@ -33,17 +29,4 @@ div {
 }
 .board .field .red {
   background-color: red;
-}
-
-.controls {
-  text-align: center;
-}
-.controls button {
-  font-size: 1.5rem;
-  margin-top: 1rem;
-}
-
-.message {
-  text-align: center;
-  margin-top: 2em;
 }

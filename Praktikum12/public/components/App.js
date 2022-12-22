@@ -53,10 +53,15 @@ export const App = () => {
   }
 
   const undoState = () => {
-    if(stateSeq.length == 0) return
+    if(stateSeq.length == 1) return
     const lastElem = stateSeq[stateSeq.length - 1]
     setState(s => lastElem)
     setStateSeq(seq => seq.filter(s => s !== lastElem))
+  }
+
+  const resetGame = () => {
+    setState(s => stateSeq[0])
+    setStateSeq(s => [{...s[0]}])
   }
 
   return ["section", 
@@ -67,7 +72,8 @@ export const App = () => {
           ["button", {onclick: () => saveStateToLocalStorage(state)}, "save"],
           ["button", {onclick: loadFromServer}, "load from server"],
           ["button", {onclick: () => saveState(state)}, "save to server"],
-          ["button", {onclick: undoState}, "undo"]
+          ["button", {onclick: undoState}, "undo"],
+          ["button", {onclick: resetGame}, "reset game"]
         ]
           
 }
