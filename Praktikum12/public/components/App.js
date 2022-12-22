@@ -7,6 +7,10 @@ import { loadState, loadStateFromLocalStorage, saveState, saveStateToLocalStorag
 import { connect4Winner } from '../lib/connect4-winner.js'
 
 export const App = () => {
+  const playerType = {
+    'r': 'red',
+    'b': 'blue'
+  }
   let defaultState = {
     board: [
       [ '', '', '', '', '', '', '' ],
@@ -35,7 +39,7 @@ export const App = () => {
         board = setInList(board, i, newList)
         let next = ""
         state.next == "b" ? (next = "r") : (next = "b")
-        connect4Winner(state.next, board) ? setWinner(w => state.next) : ""
+        connect4Winner(state.next, board) ? setWinner(w => playerType[state.next]) : ""
         setState(() => ({board, next}))
         break;
       }
@@ -53,7 +57,7 @@ export const App = () => {
   }
 
   const undoState = () => {
-    if(stateSeq.length == 1) return
+    if(stateSeq.length == 1 || winner) return
     const lastElem = stateSeq[stateSeq.length - 1]
     setState(s => lastElem)
     setStateSeq(seq => seq.filter(s => s !== lastElem))
@@ -62,11 +66,12 @@ export const App = () => {
   const resetGame = () => {
     setState(s => stateSeq[0])
     setStateSeq(s => [{...s[0]}])
+    setWinner(s => "")
   }
 
   return ["section", 
           [Winner, {winner}],
-          ["h2", `${!winner ? 'The next play is ' + state.next : ''}`],
+          ["h2", `${!winner ? 'The next play is ' + playerType[state.next] : ''}`],
           [Board, {board:state.board, clickhandler: makeMove}],
           ["button", {onclick: loadFromLocalStorage}, "load"],
           ["button", {onclick: () => saveStateToLocalStorage(state)}, "save"],
