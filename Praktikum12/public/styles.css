@@ -4,9 +4,33 @@ div {
   box-sizing: border-box;
 }
 
+button {
+  background-color: #4caf50; /* Green */
+  margin: 1rem;
+  border: none;
+  border-radius: 1rem;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+button:hover {
+  background-color: #97d299; /* Green */
+}
+
 .board {
   width: 84vmin;
   margin: auto;
+  margin-bottom: 2rem;
   outline: 1px solid black;
   display: flex;
   flex-wrap: wrap;
