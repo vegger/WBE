@@ -27,6 +27,12 @@ button:hover {
   background-color: #97d299; /* Green */
 }
 
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .board {
   width: 84vmin;
   margin: auto;
