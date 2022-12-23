@@ -2,6 +2,8 @@
 
 Team: Valentin Egger (eggerval), Laura Bärmel (baermlau), Cyril Gabriele (gabricyr)
 
+Link zu GitHub Pages: https://vegger.github.io/WBE/connect4.html
+
 Spielinformationen: https://de.wikipedia.org/wiki/Vier_gewinnt
 
 Funktionsübersicht:
