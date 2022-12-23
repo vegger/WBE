@@ -11,7 +11,7 @@ export const App = () => {
     'r': 'red',
     'b': 'blue'
   }
-  let defaultState = {
+  const defaultState = {
     board: [
       [ '', '', '', '', '', '', '' ],
       [ '', '', '', '', '', '', '' ],
@@ -49,11 +49,13 @@ export const App = () => {
   const loadFromServer = async () => {
     const loadedState = await loadState()
     loadedState ? setState(s => loadedState) : ""
+    resetStateSeq()
   }
 
   const loadFromLocalStorage = () => {
     const loadedState = loadStateFromLocalStorage()
     loadedState ? setState(s => loadedState) : ""
+    resetStateSeq()
   }
 
   const undoState = () => {
@@ -73,17 +75,25 @@ export const App = () => {
     window.location.href="https://github.com/vegger/WBE#readme";
   }
 
+  const resetStateSeq = () => {
+    setStateSeq(s => [{...defaultState}])
+  }
+
   return ["section", 
-          [Winner, {winner}],
-          ["h2", `${!winner ? 'The next play is ' + playerType[state.next] : ''}`],
+          ["div", {className: "playingState"}, 
+            [Winner, {winner}],
+            ["h2", `${!winner ? 'The next play is ' + playerType[state.next] : ''}`]
+          ],
           [Board, {board:state.board, clickhandler: makeMove}],
-          ["div", {className: "buttons"}, ["button", {onclick: loadFromLocalStorage}, "load"],
-          ["button", {onclick: () => saveStateToLocalStorage(state)}, "save"],
-          ["button", {onclick: loadFromServer}, "load from server"],
-          ["button", {onclick: () => saveState(state)}, "save to server"],
-          ["button", {onclick: undoState}, "undo"],
-          ["button", {onclick: resetGame}, "reset game"],
-          ["button", {onclick: openREADME}, "README"]]
+          ["div", {className: "buttons"}, 
+            ["button", {onclick: loadFromLocalStorage}, "load"],
+            ["button", {onclick: () => saveStateToLocalStorage(state)}, "save"],
+            ["button", {onclick: loadFromServer}, "load from server"],
+            ["button", {onclick: () => saveState(state)}, "save to server"],
+            ["button", {onclick: undoState}, "undo"],
+            ["button", {onclick: resetGame}, "reset game"],
+            ["button", {onclick: openREADME}, "README"]
+          ]
         ]
           
 }

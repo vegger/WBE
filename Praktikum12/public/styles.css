@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-body{
+body {
   background-color: #18161a;
 }
 
@@ -8,24 +8,28 @@ div {
   box-sizing: border-box;
 }
 
-p, h1, h2, button{
-  font-family: Verdana, Geneva, Tahoma, sans-serif
+p,
+h1,
+h2,
+button {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
   text-align: center;
   color: white;
 }
 
-h2{
-  border: 3px  solid #064635;
+.playingState {
+  border: 3px solid #064635;
   margin: 10px;
   border-radius: 5px;
   background-color: black;
   padding: 10px;
 }
 
-button{
+button {
   transition-duration: 0.4s;
   background-color: #064635;
   border: none;
@@ -39,9 +43,7 @@ button{
   cursor: pointer;
 }
 
-
-
-button:hover{
+button:hover {
   background-color: black;
   border: 2px solid #064635;
 }
@@ -82,11 +84,11 @@ button:hover{
   background-color: red;
 }
 
-@keyframes drop{
+@keyframes drop {
   from {
-    transform: translateY(-90vw)
+    transform: translateY(-90vw);
   }
-  to{
-    transform: translateY(0px)
+  to {
+    transform: translateY(0px);
   }
 }
