@@ -1,29 +1,49 @@
 @charset "UTF-8";
 
+body{
+  background-color: #18161a;
+}
+
 div {
   box-sizing: border-box;
 }
 
-button {
-  background-color: #4caf50; /* Green */
-  margin: 1rem;
-  border: none;
-  border-radius: 1rem;
-  color: white;
-  padding: 15px 32px;
+p, h1, h2, button{
+  font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+h1, h2 {
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
+  color: white;
+}
+
+h2{
+  border: 3px  solid #064635;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: black;
+  padding: 10px;
+}
+
+button{
+  transition-duration: 0.4s;
+  background-color: #064635;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  float: right;
+  font-size: 15px;
+  text-align: center;
+  margin: 5px;
+  padding: 5px 10px;
   cursor: pointer;
 }
 
-h1,
-h2 {
-  text-align: center;
-}
 
-button:hover {
-  background-color: #97d299; /* Green */
+
+button:hover{
+  background-color: black;
+  border: 2px solid #064635;
 }
 
 .buttons {
@@ -45,6 +65,7 @@ button:hover {
   border: 1px solid black;
   width: 12vmin;
   height: 12vmin;
+  box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
 }
 
 .board .field .piece {
@@ -52,10 +73,20 @@ button:hover {
   height: 10vmin;
   border-radius: 50%;
   margin: 1vmin;
+  box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
 }
 .board .field .blue {
   background-color: blue;
 }
 .board .field .red {
   background-color: red;
+}
+
+@keyframes drop{
+  from {
+    transform: translateY(-90vw)
+  }
+  to{
+    transform: translateY(0px)
+  }
 }
