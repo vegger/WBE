@@ -67,7 +67,7 @@ export const App = () => {
 
   const resetGame = () => {
     setState(s => stateSeq[0])
-    setStateSeq(s => [{...s[0]}])
+    resetStateSeq()
     setWinner(s => "")
   }
 
