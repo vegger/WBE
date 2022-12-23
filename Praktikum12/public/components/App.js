@@ -69,6 +69,10 @@ export const App = () => {
     setWinner(s => "")
   }
 
+  const openREADME = () => {
+    window.location.href="https://github.com/vegger/WBE#readme";
+  }
+
   return ["section", 
           [Winner, {winner}],
           ["h2", `${!winner ? 'The next play is ' + playerType[state.next] : ''}`],
@@ -78,7 +82,8 @@ export const App = () => {
           ["button", {onclick: loadFromServer}, "load from server"],
           ["button", {onclick: () => saveState(state)}, "save to server"],
           ["button", {onclick: undoState}, "undo"],
-          ["button", {onclick: resetGame}, "reset game"]]
+          ["button", {onclick: resetGame}, "reset game"],
+          ["button", {onclick: openREADME}, "README"]]
         ]
           
 }
