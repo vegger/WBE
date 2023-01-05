@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <title>WEB1-Praktikum 3 &middot; get-post</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body id="page_get-post">
+  
+  <header>
+    <img src="images/zhawlogo_54x57.gif" alt="ZHAW Logo" width="54" height="57"/>
+    <h1>GET versus POST</h1>
+  </header>
+  
+  <nav>
+    <ul>
+      <li id="navi_get-post"><a href="get-post.html">GET vs POST</a></li>
+      <li id="navi_register"><a href="register.html">Registrierung</a></li>
+      <li id="navi_html5"><a href="html5.html">HTML5</a></li>
+    </ul>
+  </nav>
+  
+  <main>
+    <form action="https://dublin.zhaw.ch/~bkrt/cgi/printenv.cgi" method="get">
+    	<fieldset>
+    		<legend>Login mit GET</legend>
+	        <label for="login_get">Benutzername:</label>
+	        <input type="text" id="login_get" name="login"/>
+	        <label for="password_get">Passwort:</label>
+	        <input type="password" id="password_get" name="password"/>
+	        <label for="submit_get"></label>
+	        <input type="submit" id="submit_get" name="submit" value="Anmelden" />
+        </fieldset>
+    </form>    
+
+    <form action="https://dublin.zhaw.ch/~bkrt/cgi/printenv.cgi" method="post">
+    	<fieldset>
+    		<legend>Login mit POST</legend>
+	        <label for="login_post">Benutzername:</label>
+	        <input type="text" id="login_post" name="login"/>
+	        <label for="password_post">Passwort:</label>
+	        <input type="password" id="password_post" name="password"/>
+	        <label for="submit_post"></label>
+	        <input type="submit" id="submit_post" name="submit" value="Anmelden" />
+        </fieldset>
+    </form>    
+    
+  </main>
+
+</body>
+</html>

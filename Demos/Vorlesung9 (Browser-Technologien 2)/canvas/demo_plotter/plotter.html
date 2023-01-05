@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Funktionsplotter mit Canvas | HTML5</title>
+    <!-- <link href="plotter.css" rel="stylesheet" type="text/css"/> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="plotter.js" defer></script>
+  </head>
+  <body>
+    <section>
+      <h1>Funktionsgraphen mit Canvas/Javascript</h1>
+      <form action="" onsubmit="return false;">
+
+	  <canvas id="plotter" width="600" height="300">
+	    Dein Browser unterstützt canvas leider nicht.
+	  </canvas>
+	
+	<p><input type="button" value="Zeichnen" onclick="Plotter.draw(this.form.function.value, Number(this.form.xmin.value), Number(this.form.xmax.value), Number(this.form.ymin.value), Number(this.form.ymax.value))" /> 
+	  <input type="button" value="Leinwand löschen" onclick="Plotter.clear()" />
+	</p>
+	<p>Funktion: <input id="function" type="text" size="20" value="Math.cos(x)" /></p>
+	<p>
+	  x<sub>min</sub>: <input id="xmin" type="text" size="4" value="-40" />
+	  x<sub>max</sub>: <input id="xmax" type="text" size="4" value="40" />
+	</p>
+	<p>
+	  y<sub>min</sub>: <input id="ymin" type="text" size="4" value="-1.5" />
+	  y<sub>max</sub>: <input id="ymax" type="text" size="4" value="1.5" />
+	</p>
+	<p>Farbe: <input id="color" type="text" size="7" value="#00f" /></p>
+      </form>
+    </section>
+    
+    <pre id="log"></pre>
+      
+    </body>
+</html>

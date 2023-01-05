@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  JavaScript Part
+//
+//  Function components with children
+//
+
+import { render, createElement } from "./lib/suiweb.js";     
+
+// JSX notation:
+/*
+const MyButton = (props) => (
+  <button style="background: khaki">{props.children}</button>
+)
+
+const Header = (props) => (
+  <h2>Hello {props.name} {props.children}</h2>
+)
+
+const App = (props) => (
+  <div>
+    <Header name={props.name}>and<br />web developers</Header>
+    <MyButton>Start</MyButton>
+    <MyButton>Stop</MyButton>
+  </div>
+)
+
+const element = (<App name="SuiWeb" />)
+*/
+// Converted JSX to JS calls:
+
+const MyButton = props => createElement("button", {
+  style: "background: khaki"
+}, props.children);
+
+const Header = props => createElement("h2", null, "Hello ", props.name, " ", props.children);
+
+const App = props => createElement("div", null, createElement(Header, {
+  name: props.name
+}, "and", createElement("br", null), "web developers"), createElement(MyButton, null, "Start"), createElement(MyButton, null, "Stop"));
+
+const element = createElement(App, {
+  name: "SuiWeb"
+});
+
+
+const container = document.getElementById("root");
+render(element, container);
+
+    
+  </script>
+</body>
+</html>

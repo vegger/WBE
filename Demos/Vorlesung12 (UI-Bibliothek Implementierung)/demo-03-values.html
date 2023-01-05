@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  Data
+//  - e.g., local variables in the component
+//  - they control the output to the DOM
+//
+
+import { render } from "./lib/suiweb.js"   
+
+const App = () => {
+  const enabled = false
+  const text = 'A Button'
+  const placeholder = 'input value...'
+  const size = 50
+
+  return (
+    ["section",
+      ["button", {disabled: !enabled}, text],
+      ["input", {placeholder, size, autofocus: true}] ]
+  )
+}
+
+const element = 
+  [App]
+
+const container = document.getElementById("root")
+render(element, container)
+
+
+    
+  </script>
+</body>
+</html>
