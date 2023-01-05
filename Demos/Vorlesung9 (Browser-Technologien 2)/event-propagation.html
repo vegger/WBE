@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>My home page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+  <body>
+    <p>A paragraph with a <button>button</button>.</p>
+    
+    <script>
+      let para = document.querySelector("p")
+      let button = document.querySelector("button")
+      para.addEventListener("mousedown", () => {
+        console.log("Handler for paragraph.")
+      })
+      button.addEventListener("mousedown", event => {
+        console.log("Handler for button.")
+        if (event.button == 2) event.stopPropagation()
+      })
+    </script>
+    
+  </body>
+</html>

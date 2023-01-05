@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  Container component
+//  - responsible for fetching the data
+//  - calls other component to render the data
+//
+
+import { render, useState, useEffect } from "./lib/suiweb.js";     
+
+
+// Utility function that’s intended to mock data fetching 
+//
+function fetchData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve([ 'First', 'Second', 'Third' ])
+    }, 3000)
+  })
+}
+
+
+// Container component
+//
+const MyContainer = () => {
+
+  let [state, setState] = useState("state", 1, { items: ["Fetching data..."] })
+
+  // after the component has been rendered, fetch data
+  useEffect(() => {
+    if (state == initialState)
+      fetchData()
+        .then(items => setState(() => ({ items })))
+  })
+
+  return (
+    [MyList, state]
+  )
+}
+
+
+// Conponent responsible for rendering a list
+//
+const MyList = ({items}) => (
+  ["ul", ...items.map((item) => ["li", item]) ]
+)
+
+
+const element =
+  [MyContainer]
+
+const container = document.getElementById("root")
+render(element, container)
+
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  JavaScript Part
+//
+//  Mapping an array
+//  - no mixing of HTML and JavaScript code
+//  - it's just JavaScript
+//
+
+import { render } from "./lib/suiweb.js";     
+
+const List = ({items}) =>
+  ["ul", ...items.map((item) => ["li", item]) ];
+
+const element = 
+  [List, {items: ["milk", "bread", "sugar"]}];
+
+const container = document.getElementById("root");
+render(element, container);
+
+
+    
+  </script>
+</body>
+</html>

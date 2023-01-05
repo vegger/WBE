@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Snake Demo</title>
+
+<script type="text/javascript" src="snake.js"></script>
+<script type="text/javascript">
+
+window.onload = function() {
+
+	var NORTH=0, EAST=1, SOUTH=2, WEST=3;
+
+	var snake = makeSnake(5, 5, WEST);
+	snake.add(EAST);
+	snake.add(SOUTH);
+	snake.add(EAST);
+	snake.add(EAST);
+	snake.add(SOUTH);
+	snake.add(SOUTH);
+	snake.add(WEST);
+	
+	var snakeview = makeSnakeView('snakecanvas', 20);
+	snake.setview(snakeview);
+	snake.draw();
+
+	document.getElementById('move').onclick = function () {
+		snake.move();
+		snake.draw();
+	}
+	document.getElementById('left').onclick = function () {
+		snake.left();
+		snake.draw();
+	}
+	document.getElementById('right').onclick = function () {
+		snake.right();
+		snake.draw();
+	}
+
+};
+
+</script>
+
+
+<style type="text/css">
+	canvas { border: 1px solid black; }
+</style>
+
+</head>
+<body>
+<div>
+	<canvas id="snakecanvas" width="500" height="300"></canvas>
+</div>
+<form>
+	<p>
+		<input type="button" id="left" value="turn left">
+		<input type="button" id="move" value="move">
+		<input type="button" id="right" value="turn right">
+	</p>
+</form>
+</body>
+</html>

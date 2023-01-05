@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  JavaScript Part
+//
+//  Styles, allowed types
+//  - CSS style string
+//  - style object
+//  - array of style objects
+//
+
+import { render } from "./lib/suiweb.js";     
+
+const StyledList = ({items}) => {
+  let style = [styles.listitem, {color: "#556B2F"}];
+  return (
+    ["ul", ...items.map((item) => ["li", {style}, item]) ]
+  );
+}
+
+const element = 
+  [StyledList, {items: ["milk", "bread", "sugar"]}];
+
+const styles = {
+  listitem: {
+    padding: "1em",
+    margin: "0.5em 2em",
+    fontSize: "1.5em",
+    listStyleType: "none",
+    border: "1px solid blue",
+    borderRadius: "5px",
+    background: "#efe",
+  }
+}
+
+const container = document.getElementById("root");
+render(element, container);
+
+
+    
+  </script>
+</body>
+</html>

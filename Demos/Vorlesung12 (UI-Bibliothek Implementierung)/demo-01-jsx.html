@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  JavaScript Part
+//
+//  JSX transpiled to createElement calls
+//
+//  Hint: trying this demo in the file system only can result in an error
+//  like "Cross origin request blocked" since the folder in the file system
+//  is not considered as same origin.
+//
+//  - it seems to work in Safari
+//  - in Firefox the setting privacy.file_unique_origin can be set to false
+//  - or: try the demos from an HTTP server
+//
+
+import { render, createElement } from "./lib/suiweb.js";     
+
+
+// JSX:
+
+/** @jsx createElement */ /*
+
+const element = (
+  <div style="background: salmon">
+    <h1>Hello World</h1>
+    <h2 style="text-align:right">from SuiWeb</h2>
+  </div>
+);
+
+*/
+
+// Transpiled with Babel:
+
+/** @jsx createElement */
+const element = createElement("div", {
+  style: "background: salmon"
+}, createElement("h1", null, "Hello World"), createElement("h2", {
+  style: "text-align:right"
+}, "from SuiWeb"));
+
+const container = document.getElementById("root");
+render(element, container);
+
+    
+  </script>
+</body>
+</html>

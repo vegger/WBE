@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  Component with state
+//  - initial state
+//  - timeout handler changes state
+//  - automatically re-render with new state
+//
+
+import { render, useState } from "./lib/suiweb.js";     
+
+const App = () => {
+  let initialState = {
+    heading: "Awesome SuiWeb (Busy)",
+    content: "Loading...",
+  }
+  
+  let [state, setState] = useState("state", 1, initialState)
+  let [timer, setTimer] = useState("timer", 1, null)
+  
+  const startTimer = () => setTimeout(() => {
+    setState(() => ({
+      heading: 'Awesome SuiWeb',
+      content: 'Done!',
+    }))
+  }, 3000)
+   
+  if (!timer) setTimer(startTimer, false) 
+  
+  const { heading, content } = state
+  
+  return (
+    ["main", 
+      ["h1", heading],
+      ["p",  content] ]
+  )
+}
+
+const element =
+  [App]
+
+const container = document.getElementById("root")
+render(element, container)
+
+    
+  </script>
+</body>
+</html>
