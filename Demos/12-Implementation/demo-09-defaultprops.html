@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  Default properties
+//  - define defaults in component
+//  - merge argument props into defaults
+//
+
+import { render } from "./lib/suiweb.js";     
+
+const App = () => (
+  ["main", 
+    [MyButton, {disabled: true, text: 'Delete'}],
+    [MyButton] ]
+)
+
+const MyButton = (props) => {
+  const defaultProps = {
+    disabled: false, 
+    text: 'Button',
+  }
+  const myprops = {...defaultProps, ...props}
+  const { disabled, text } = myprops
+  
+  return (
+    ["button", {disabled}, text]
+  )
+}
+
+const element =
+  [App]
+
+const container = document.getElementById("root")
+render(element, container)
+
+    
+  </script>
+</body>
+</html>

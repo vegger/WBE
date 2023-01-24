@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  Component design
+//  - App component handles state and updates
+//  - other components have been moved to separate files
+//
+
+import { render, useState, useEffect } from "./lib/suiweb.js"
+
+import { cuid } from "./lib-components/cuid.js"
+
+import { AddArticle } from "./lib-components/AddArticle.js"
+import { ArticleList } from "./lib-components/ArticleList.js"
+
+
+let initialState = {
+  articles: [],
+  title: '',
+  summary: '',
+}
+
+
+const App = () => {
+
+  let [state, setState] = useState("state", 1, initialState)
+  
+  // When the title of a new article changes, update the state
+  // of the component with the new title value
+  const onChangeTitle = e => {
+    setState((s) => ({...s, title: e.target.value}))
+  }
+
+  // When the summary of a new article changes, update the state
+  // of the component with the new summary value
+  const onChangeSummary = e => {
+    setState((s) => ({...s, summary: e.target.value}))
+  }
+
+  // Creates a new article and empties the title
+  // and summary inputs
+  const onClickAdd = e => {
+    let article = {
+      id: cuid(),
+      title: state.title,
+      summary: state.summary,
+      display: 'none',
+    }
+    setState((s) => ({...s, articles: [...s.articles, article],
+      title: '', summary: ''}))
+  }
+
+  // Removes an article from the list
+  const onClickRemove = (id) => {
+    let articles = state.articles.filter(a => a.id != id)
+    setState((s) => ({...s, articles}))
+  }
+
+  // Toggles the visibility of the article summary by
+  // setting the "display" state of the article
+  const onClickToggle = (id) => {
+    let index = state.articles.findIndex(a => a.id == id)
+    let article = state.articles[index]
+    let display = article.display ? '' : 'none'
+    let articles = [...state.articles.slice(0,index),
+      {...article, display},
+      ...state.articles.slice(index+1)] 
+    setState((s) => ({...s, articles}))
+  }
+
+  // Load articles from server
+  const onLoadData = () => {
+    let url = 'http://localhost:3000/'
+    fetch(url + "api/data/articles?api-key=wbeweb", { 
+      method: 'GET', 
+    })
+    .then(response => response.json())
+    .then(articles => setState((s) => ({...s, articles})))
+    .catch(() => {alert("Network connection failed")})
+  }
+
+  return (
+    ["section", 
+      [AddArticle, {
+        name: "Articles",
+        title: state.title,
+        summary: state.summary,
+        onChangeTitle,
+        onChangeSummary,
+        onClickAdd,   
+      }],
+      state.articles.length != 0
+      ? [ArticleList, {
+          articles: state.articles,
+          onClickToggle,
+          onClickRemove,
+        }]
+      : ["p", ["button", {onclick: onLoadData}, "Load Articles"]]
+    ]
+  )
+}
+
+
+const element =
+  [App]
+
+const container = document.getElementById("root")
+render(element, container)
+
+    
+  </script>
+</body>
+</html>

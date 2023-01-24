@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+/*
+ * Stylesheet für das Einführungsbeispiel
+*/
+
+body {
+  background-color: #999;
+}
+
+section {
+  min-height: 30em;
+  min-width: 20em;
+  max-width: 50em;
+  margin: 1em auto;
+  padding: 1em;
+  border-radius: 1em;
+  background-color: white;
+}
+
+header {
+  float: left;
+}
+
+article {
+  margin-left: 200px;
+  font-family: 'Georgia Pro', georgia, serif;
+  line-height: 140%; 
+}
+
+h1 {
+  margin-top: 64px;
+  font-size: 2em;
+}
+

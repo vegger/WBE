@@ -1,0 +1,17 @@
+let factorial = (n) => n<=1 ? 1 : n * factorial(n-1)
+factorial(20)
+factorial.doc = "Fakultätsfunktion" 
+factorial.created = "26.08.2021"
+factorial
+factorial(5, 10, 20)
+let param = (a, b, c) => [a, b, c]
+param(1)
+param(1, 2, 3, 4)
+let data = [10, 11, 12, 13, 14]
+param(42, ...data)
+let divmod = (m, n) => [Math.floor(m/n), m%n]
+let [div, rest] = divmod(17, 7)
+div + rest
+const prefix = (pre) => (text) => pre + text
+const mod = prefix("mod_")
+mod("getData")

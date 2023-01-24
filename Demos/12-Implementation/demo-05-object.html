@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  Render an object to a table
+//  - e.g., local variables in the component
+//  - they control the output to the DOM
+//
+
+import { render } from "./lib/suiweb.js"   
+
+const App = ({obj}) =>
+  ["table", {style},
+    ...Object.keys(obj).map((key) => 
+    ["tr", ["td", key], ["td", obj[key]]])]
+
+const style = {
+  width: "8em",
+  background: "lightblue",
+}
+
+const element = 
+  [App, {obj: {one: 1111, two: 2222, three: 3333}}]
+
+const container = document.getElementById("root")
+render(element, container)
+
+
+    
+  </script>
+</body>
+</html>
