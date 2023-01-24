@@ -19,3 +19,7 @@ boundSpeak("I could use a carrot right now.")
 // bind argument
 let allSpeak = boundSpeak.bind(null, "Carrot!")
 allSpeak()
+
+// bind argument
+allSpeak = boundSpeak.bind(null, "Kello'gs amk!")
+allSpeak()

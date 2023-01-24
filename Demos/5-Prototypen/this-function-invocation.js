@@ -1,7 +1,7 @@
 //  this
 //  function invocation
 //
-//  "use strict"
+//"use strict"
 //
 function speak (line) {
   console.log(`The ${this.type} rabbit says '${line}'`)
