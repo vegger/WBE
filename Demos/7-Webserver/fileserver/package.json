@@ -1,0 +1,14 @@
+{
+  "name": "fileserver",
+  "version": "1.0.0",
+  "description": "Demo Fileserver",
+  "main": "fileserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eloquent JavaScript",
+  "license": "ISC",
+  "dependencies": {
+    "mime": "^2.2.0"
+  }
+}

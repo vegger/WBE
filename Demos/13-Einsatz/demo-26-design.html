@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  Component design
+//  - App component handles state and updates
+//  - other components 
+//
+
+import { render, useState, useEffect } from "./lib/suiweb.js";     
+
+function cuid() {
+  var S4 = function() {
+    return (((1+Math.random())*0x10000)|0).toString(16).substring(1)
+  }
+  return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4())
+}
+
+const ArticleItem = ({article, onClickToggle, onClickRemove}) => (
+  ["li",
+    ["a", { href: '#', title: "Toggle Summary", 
+      onclick: onClickToggle.bind(null, article.id) }, 
+      article.title ], 
+    " ",
+    ["a", { href: '#', title: "Remove", 
+      onclick: onClickRemove.bind(null, article.id) }, 
+      "✗" ],
+    ["p", {style: {display: article.display}}, 
+      article.summary] ]
+)
+
+
+const ArticleList = ({articles, onClickToggle, onClickRemove}) => (
+  ["ul", ...articles.map(i => (
+    [ArticleItem, {
+      key: i.id,
+      article: i,
+      onClickToggle,
+      onClickRemove} ]))]
+)
+ 
+ 
+const AddArticle = ({name, title, summary, 
+  onChangeTitle, onChangeSummary, onClickAdd}) => (
+  ["section", 
+    ["h1", name],
+    ["input", {placeholder: "Title", value: title, oninput: onChangeTitle}],
+    ["input", {placeholder: "Summary", value: summary, oninput: onChangeSummary}],
+    ["button", {onclick: onClickAdd}, "Add"] ]
+)
+
+
+const App = () => {
+
+  let initialState = {
+    articles: [
+      {
+        id: cuid(),
+        title: 'Article 1',
+        summary: 'Article 1 Summary',
+        display: 'none',
+      },
+      {
+        id: cuid(),
+        title: 'Article 2',
+        summary: 'Article 2 Summary',
+        display: 'none',
+      },
+      {
+        id: cuid(),
+        title: 'Article 3',
+        summary: 'Article 3 Summary',
+        display: 'none',
+      },
+      {
+        id: cuid(),
+        title: 'Article 4',
+        summary: 'Article 4 Summary',
+        display: 'none',
+      },
+    ],
+    title: '',
+    summary: '',
+  }
+
+  let [state, setState] = useState("state", 1, initialState)
+  
+  // When the title of a new article changes, update the state
+  // of the component with the new title value
+  const onChangeTitle = e => {
+    setState((s) => ({...s, title: e.target.value}))
+  }
+
+  // When the summary of a new article changes, update the state
+  // of the component with the new summary value
+  const onChangeSummary = e => {
+    setState((s) => ({...s, summary: e.target.value}))
+  }
+
+  // Creates a new article and empties the title
+  // and summary inputs
+  const onClickAdd = e => {
+    let article = {
+      id: cuid(),
+      title: state.title,
+      summary: state.summary,
+      display: 'none',
+    }
+    setState((s) => ({...s, articles: [...s.articles, article],
+      title: '', summary: ''}))
+  }
+
+  // Removes an article from the list
+  const onClickRemove = (id) => {
+    let articles = state.articles.filter(a => a.id != id)
+    setState((s) => ({...s, articles}))
+  }
+
+  // Toggles the visibility of the article summary by
+  // setting the "display" state of the article
+  const onClickToggle = (id) => {
+    let index = state.articles.findIndex(a => a.id == id)
+    let article = state.articles[index]
+    let display = article.display ? '' : 'none'
+    let articles = [...state.articles.slice(0,index),
+      {...article, display},
+      ...state.articles.slice(index+1)] 
+    setState((s) => ({...s, articles}))
+  }
+
+  return (
+    ["section", 
+      [AddArticle, {
+        name: "Articles",
+        title: state.title,
+        summary: state.summary,
+        onChangeTitle,
+        onChangeSummary,
+        onClickAdd,   
+      }],
+      [ArticleList, {
+        articles: state.articles,
+        onClickToggle,
+        onClickRemove,
+      }] ]
+  )
+}
+
+
+const element =
+  [App]
+
+const container = document.getElementById("root")
+render(element, container)
+
+    
+  </script>
+</body>
+</html>

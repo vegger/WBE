@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  Liste aufbauen
+//
+
+import { render, useState } from "./lib/suiweb.js"  
+
+const App = () => {
+  
+  let [text, setText] = useState("myTextInput", 1, "")
+  let [items, setItems] = useState("items", 1, [])
+  
+  const updateValue = e => {
+    setText(() => e.target.value)
+  }
+  const enterItem = e => {
+    setItems(() => [...items, text])
+    setText(() => "")
+  }
+  const clearList = e => {
+    setItems(() => [])
+  }
+  
+  return (
+    ["div", {style: styles.div},
+      ["p", "Ihre Eingabe:"],
+      ["input", {oninput: updateValue, value: text, autofocus: true}],
+      ["button", {onclick: enterItem}, "Speichern"],
+      ["button", {onclick: clearList}, "Liste löschen"],
+      ["p", "Liste:"],
+      [List, {items}] ] )
+}
+
+const styles = {
+  div: {
+    padding: "1em",
+    border: "1px solid blue",
+    borderRadius: "5px",
+  }
+}
+
+const List = ({items}) =>
+  ["ul", ...items.map((item) => ["li", item]) ]
+
+
+const element = [App]
+
+const container = document.getElementById("root")
+render(element, container)
+
+    
+  </script>
+</body>
+</html>

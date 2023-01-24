@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <title>Mein erstes HTML-Dokument</title>
+    <meta charset="utf-8" />
+    
+    <style>
+      p {cursor: pointer;}
+    </style>
+  </head>
+
+  <body>
+    <p>Hallo Welt!</p>
+  </body>
+  
+  <script>
+    
+// const btn = document.createElement("button");
+// const btnText = document.createTextNode("Farbe ändern");
+// btn.append(btnText);
+// btn.addEventListener('click', function () {
+//   let color = ["red", "green", "blue"][Math.floor(Math.random()*3)];
+//   document.querySelector('p').style.color = color;
+// });
+// 
+// document.body.append(btn);  
+
+  let pElem = document.querySelector('p');
+  pElem.addEventListener('click', function(){
+  let newText = document.createTextNode("removed!")
+    pElem.replaceChild(newText, pElem.childNodes[0])
+  })
+   
+  </script>
+</html>

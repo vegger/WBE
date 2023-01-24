@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo renderSJDON</title>
+  <script>
+
+
+const element =
+  ["div", {style: "background: salmon"},
+    ["h1", "Hello World"],
+    ["h2", "from our library", {style: "text-align:right"}] ]
+
+
+function init () {
+  let appRoot = document.getElementById("app") 
+  renderSJDON(element, appRoot)
+}
+
+
+function renderSJDON (sjdon, node) {
+  if (Array.isArray(sjdon)) {
+    let [type, ...children] = sjdon
+    let newNode = document.createElement(type)
+    for (let child of children) renderSJDON(child, newNode)
+    node.appendChild(newNode)
+  }
+  else if (typeof sjdon === 'object') {
+    for (attr in sjdon) {
+      node.setAttribute(attr, sjdon[attr])
+    }
+  }
+  else {
+    node.appendChild(document.createTextNode(sjdon))
+  }  
+}
+
+    
+  </script>
+
+</head>
+<body>
+
+  <div id="app"></div>
+
+  <script>
+    init()
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+/* Stylesheet fuer das WBD HTML Praktikum 3
+ */
+
+/* reset all */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* HTML5 HACK */
+header, section, footer, aside, nav, article, main {  
+	display: block;  
+}
+
+/* Typselektoren */
+body {
+  margin: 8px;
+  font-family: sans-serif;
+  min-width: 410px;
+}
+
+h1 {
+  font-size: 180%;
+  margin-top: 16px;
+}
+
+h2, section h1, main h1, article h1 {
+  font-size: 140%;
+  margin-top: 14px;
+}
+
+
+p {
+  margin-top: 12px;
+}
+
+/* 
+ * Formating of form elements 
+ */
+fieldset {
+  margin: 1em 0 1em 0;
+  padding: 0.5em 0.5em;
+  border: 1px solid grey;
+}
+legend {
+  padding: 0 0.3em;
+  color: grey;
+}
+
+/* special fieldset for grouping of radio- and checkbox elements */
+fieldset.radiocheckgroup {
+  position: relative;
+  margin: 0 0 0.6em 0em;
+  padding: 0;
+  border: 0px none;
+}
+
+fieldset.radiocheckgroup legend {
+	padding: 0;
+	line-height:0;
+	color: black;
+}
+/* because Firefox is ignoring positioning of legend, 
+   it has to be wrapped with span */
+fieldset.radiocheckgroup legend > span {
+  position: relative;
+  top: 0.6em;
+}
+	
+label {
+  width: 9em;
+  margin: 0.1em 0;
+  padding: 0;
+  float: left;
+}
+
+select {
+  display: block;
+  margin: 0 0 0.6em 9em;
+  padding: 0.1em 0.3em;
+  border:  1px solid black;
+  font-size: inherit;
+}
+
+input, textarea {
+  display: block;
+  margin: 0 0 0.6em 9em;
+  padding: 0.1em 0.3em;
+  border:  1px solid black;
+  font-size: inherit;
+  color: black;
+}
+
+/* special input elements */
+input[type="radio"], input[type="checkbox"] {
+  display: inline;
+}
+
+input[type="radio"] + label, input[type="checkbox"] + label {
+  width: auto;
+  float: none;
+}
+
+input[type="submit"]:valid {
+  padding:2px 5px;
+  color: black;
+  background:none;
+  background-color: #eee;
+  opacity:1.0;
+}
+
+input[required], textarea[required], select[required] {
+  background-color:#dfd;
+}
+
+/* pseudo classes for form elements */
+input:focus, textarea:focus {
+	background-color:#ffd;
+}
+
+input:invalid, textarea:invalid {
+  color: red;
+}
+
+input:valid, textarea:valid {
+  color: green;
+}
+
+/* format placeholder text */
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color:    #999;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color:    #999;
+}
+
+
+
+/* 3. ID-Selektor + Kontext */
+#head, header {
+  border: 1px solid black;
+}
+
+#head img, header img {
+  float: left;
+  width: 54px;
+  height: 57px;
+  padding: 4px 18px 4px 60px;
+  background-color: white;
+}
+
+#head h1, header h1 {
+  height: 29px;
+  padding: 18px;
+  margin: 0;
+  background-color: #333333;
+  color: #ccccff;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#content, body > section, body > main, body > article {
+  margin-top: 12px;
+  margin-left: 150px;
+}
+
+
+/* 6. Pseudoklassen */
+a { 
+  text-decoration: none;
+  color: #333399;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  color: green;
+}
+
+/* 7. Navigation (Menu mit CSS) */
+#navigation, nav {
+  float: left;
+  margin: 12px 0;
+  padding: 0;
+  border: 1px solid #333333;
+}
+
+#navigation ul, nav ul {
+    list-style-type: none;
+}
+
+#navigation li a, nav li a {
+  text-decoration: none;
+  display: block;
+  width: 102px;
+  margin: 0;
+  padding: 7px 15px;
+  background-color: #ddddff;
+  text-align: left;
+}
+
+/* IE hack, verhindert Zeile unter listenelement */
+#navigation li a {
+	_height: 0;
+	zoom: 1;
+}
+
+
+#navigation li a:hover, nav li a:hover {
+  background-color: #9999ff;
+}
+
+
+#page_get-post #navi_get-post a,
+#page_register #navi_register a,
+#page_html5 #navi_html5 a
+{
+  background-color: #333333;
+  color: #ccccff;
+}
+
